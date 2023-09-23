@@ -24,3 +24,47 @@ for (let i = 0; i < numDrumButton; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
 };
 
+// How to capture key code
+// document.addEventListener('keypress', (event) => {
+//     var name = event.key;
+//     var code = event.code;
+//     // Alert the key name and key code on keydown
+//     alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+// });
+
+
+document.addEventListener("keypress", function(event) {
+    // Check if the pressed key's code is "KeyW"
+    if (event.code === "KeyW") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/tom-1.mp3');
+        audio.play();
+    } else if (event.code === "KeyA") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/tom-2.mp3');
+        audio.play();
+    } else if (event.code === "KeyS") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/tom-3.mp3');
+        audio.play();
+    } else if (event.code === "KeyD") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/tom-4.mp3');
+        audio.play();
+    } else if (event.code === "KeyJ") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/crash.mp3');
+        audio.play();
+    } else if (event.code === "KeyK") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/kick-bass.mp3');
+        audio.play();
+    } else if (event.code === "KeyL") {
+        // Create an Audio object and play the sound file
+        audio = new Audio('./sounds/snare.mp3');
+        audio.play();
+    }
+});
+
+
+
