@@ -1,89 +1,188 @@
-const numDrumButton = document.querySelectorAll(".drum").length;
+// const keySoundMap = {
+//     KeyW: {
+//         sound: './sounds/tom-1.mp3',
+//         className: 'w',
+//     },
+//     KeyA: {
+//         sound: './sounds/tom-2.mp3',
+//         className: 'a',
+//     },
+//     KeyS: {
+//         sound: './sounds/tom-3.mp3',
+//         className: 's',
+//     },
+//     KeyD: {
+//         sound: './sounds/tom-4.mp3',
+//         className: 'd',
+//     },
+//     KeyJ: {
+//         sound: './sounds/crash.mp3',
+//         className: 'j',
+//     },
+//     KeyK: {
+//         sound: './sounds/kick-bass.mp3',
+//         className: 'k',
+//     },
+//     KeyL: {
+//         sound: './sounds/snare.mp3',
+//         className: 'l',
+//     },
+// };
 
-for (let i = 0; i < numDrumButton; i++) {
-    const handleClick = () => {
-        var audio;
-        if (i === 0) {
-            audio = new Audio('./sounds/tom-1.mp3');
-        } else if (i === 1) {
-            audio = new Audio('./sounds/tom-2.mp3');
-        } else if (i === 2) {
-            audio = new Audio('./sounds/tom-3.mp3');
-        } else if (i === 3) {
-            audio = new Audio('./sounds/tom-4.mp3');
-        } else if (i === 4) {
-            audio = new Audio('./sounds/crash.mp3');
-        } else if (i === 5) {
-            audio = new Audio('./sounds/kick-bass.mp3');
-        } else if (i === 6) {
-            audio = new Audio('./sounds/snare.mp3');
-        } 
-    
-        audio.play();
-    }
-    document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
-};
+// const numDrumButtons = document.querySelectorAll(".drum").length;
 
-// How to capture key code
-// document.addEventListener('keypress', (event) => {
-//     var name = event.key;
-//     var code = event.code;
-//     // Alert the key name and key code on keydown
-//     alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+// for (let i = 0; i < numDrumButtons; i++) {
+//     document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+//         var audio;
+//         switch (i) {
+//             case 0:
+//                 audio = new Audio('./sounds/tom-1.mp3');
+//                 break;
+//             case 1:
+//                 audio = new Audio('./sounds/tom-2.mp3');
+//                 break;
+//             case 2:
+//                 audio = new Audio('./sounds/tom-3.mp3');
+//                 break;
+//             case 3:
+//                 audio = new Audio('./sounds/tom-4.mp3');
+//                 break;
+//             case 4:
+//                 audio = new Audio('./sounds/crash.mp3');
+//                 break;
+//             case 5:
+//                 audio = new Audio('./sounds/kick-bass.mp3');
+//                 break;
+//             case 6:
+//                 audio = new Audio('./sounds/snare.mp3');
+//                 break;
+//             default:
+//                 audio = new Audio('');
+//                 break;
+//         }
+//         audio.play();
+//     });
+// };
+
+
+
+// // Define the buttonAnimation function
+// function buttonAnimation(currentKey) {
+//     var activeButtons = document.querySelectorAll("." + currentKey);
+
+//     // Check if any elements were found
+//     if (activeButtons.length > 0) {
+//         // Add the "pressed" class to each found element
+//         activeButtons.forEach(function(activeButton) {
+//             activeButton.classList.add("pressed");
+
+//             // Remove the "pressed" class after a delay
+//             setTimeout(function() {
+//                 activeButton.classList.remove("pressed");
+//             }, 100);
+//         });
+//     }
+// }
+
+// // Function to play audio based on key or button click
+// function playAudio(soundPath) {
+//     var audio = new Audio(soundPath);
+//     audio.play();
+// }
+
+// // Add event listeners to drum buttons
+// const drumButtons = document.querySelectorAll(".drum");
+
+// drumButtons.forEach(function(button) {
+//     button.addEventListener("click", function() {
+//         var buttonKey = this.textContent;
+//         var soundPath = keySoundMap.buttonKey;
+//         playAudio(soundPath);
+//         buttonAnimation(buttonKey);
+//     });
 // });
 
 
+
 // document.addEventListener("keypress", function(event) {
-//     // Check if the pressed key's code is "KeyW"
-//     if (event.code === "KeyW") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/tom-1.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyA") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/tom-2.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyS") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/tom-3.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyD") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/tom-4.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyJ") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/crash.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyK") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/kick-bass.mp3');
-//         audio.play();
-//     } else if (event.code === "KeyL") {
-//         // Create an Audio object and play the sound file
-//         audio = new Audio('./sounds/snare.mp3');
-//         audio.play();
+
+//     if (keySoundMap.hasOwnProperty(event.code)) {
+//         var soundPath = keySoundMap[event.code].sound;
+//         var className = keySoundMap[event.code].className;
+//         playAudio(soundPath);
+
+//         buttonAnimation(className);
 //     }
 // });
 
 
+// AFTER REWORK
 
-document.addEventListener("keypress", function(event) {
-    // Define an object that maps key codes to sound file paths
-    const keySoundMap = {
-        KeyW: './sounds/tom-1.mp3',
-        KeyA: './sounds/tom-2.mp3',
-        KeyS: './sounds/tom-3.mp3',
-        KeyD: './sounds/tom-4.mp3',
-        KeyJ: './sounds/crash.mp3',
-        KeyK: './sounds/kick-bass.mp3',
-        KeyL: './sounds/snare.mp3',
-    };
+const keySoundMap = {
+    KeyW: {
+        sound: './sounds/tom-1.mp3',
+        className: 'w',
+    },
+    KeyA: {
+        sound: './sounds/tom-2.mp3',
+        className: 'a',
+    },
+    KeyS: {
+        sound: './sounds/tom-3.mp3',
+        className: 's',
+    },
+    KeyD: {
+        sound: './sounds/tom-4.mp3',
+        className: 'd',
+    },
+    KeyJ: {
+        sound: './sounds/crash.mp3',
+        className: 'j',
+    },
+    KeyK: {
+        sound: './sounds/kick-bass.mp3',
+        className: 'k',
+    },
+    KeyL: {
+        sound: './sounds/snare.mp3',
+        className: 'l',
+    },
+};
 
-    // Check if the pressed key's code exists in the map
-    if (keySoundMap.hasOwnProperty(event.code)) {
-        // Create an Audio object and play the corresponding sound
-        const audio = new Audio(keySoundMap[event.code]);
-        audio.play();
+// Function to create audio elements and play sounds
+function playSound(soundPath) {
+    const audio = new Audio(soundPath);
+    audio.play();
+}
+
+// Function to handle button animations
+function animateButton(currentKey) {
+    const activeButtons = document.querySelectorAll("." + currentKey);
+    activeButtons.forEach((activeButton) => {
+        activeButton.classList.add("pressed");
+        setTimeout(() => {
+            activeButton.classList.remove("pressed");
+        }, 100);
+    });
+}
+
+// Add event listeners to drum buttons
+const drumButtons = document.querySelectorAll(".drum");
+drumButtons.forEach((button) => {
+    button.addEventListener("click", function() {
+        const buttonKey = this.textContent;
+        const soundPath = keySoundMap["Key" + buttonKey.toUpperCase()].sound;
+        playSound(soundPath);
+        animateButton(buttonKey);
+    });
+});
+
+// Add event listener for key presses
+document.addEventListener("keydown", function(event) {
+    const soundPath = keySoundMap[event.code]?.sound;
+    if (soundPath) {
+        const className = keySoundMap[event.code]?.className;
+        playSound(soundPath);
+        animateButton(className);
     }
 });
